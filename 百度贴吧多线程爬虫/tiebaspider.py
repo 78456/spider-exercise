@@ -91,9 +91,7 @@ class BDTB(object):
 if __name__ == "__main__":
     baseURL = 'http://tieba.baidu.com/p/3138733512?see_lz=1'
     bdtb = BDTB(baseURL)
-    size = []
-    for i in range(int(bdtb.getPageNum())):
-        size.append(i+1)
+    size = [i for i in range(1, int(bdtb.getPageNum())+1)]
     #多线程
     pool = ThreadPool(8)
     result = pool.map(bdtb.getContent, size)
